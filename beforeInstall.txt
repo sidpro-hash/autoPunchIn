@@ -1,0 +1,14 @@
+Welcome to the PunchIn Software Installer! Before we begin, please make sure that you have completed the following steps:
+
+    1.Close all open programs and files on your computer.
+    2.Save and back up any important data that you want to keep.
+    3.Make sure you have stable internet connection
+    
+    4.Make sure that your system meets the minimum requirements for this software:
+    
+        Operating system: Windows 7 or later
+    	Processor: 2 GHz or faster
+    	Memory: 4 GB of RAM
+    	Storage: 1 GB of available space
+
+By continuing with the installation, you agree to the terms of the collegeek Software License Agreement. Click 'Next' to begin the installation process.

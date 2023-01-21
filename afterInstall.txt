@@ -1,0 +1,10 @@
+Congratulations, the PunchIn Software has been successfully installed on your computer! To start using the software, follow these steps:
+
+    1. Click the 'Start' button on your desktop.
+    2. Select 'All Programs' and then find the 'punchIn' folder.
+    3. Click on the 'punchIn Software' icon to launch the program.
+  
+    Note: Please Run Program as Administrator. Right Click on the 'punchIn Software' icon 
+	  click on 'Run as administrator'.
+
+For more information about how to use the software, please consult the user manual or visit our support page at collegeek.com. We hope you enjoy using the punchIn Software! If you have any feedback or suggestions, please don't hesitate to contact us at collegeekonline@gmail.com.

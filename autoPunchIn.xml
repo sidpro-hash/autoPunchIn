@@ -1,0 +1,55 @@
+<ns0:Task xmlns:ns0="http://schemas.microsoft.com/windows/2004/02/mit/task" version="1.2">
+  <ns0:RegistrationInfo>
+    <ns0:Date>2023-01-07T15:38:36</ns0:Date>
+    <ns0:Author>autoPunchIn</ns0:Author>
+    <ns0:URI>\autoPunchIn</ns0:URI>
+  </ns0:RegistrationInfo>
+  <ns0:Triggers>
+    <ns0:CalendarTrigger>
+      <ns0:StartBoundary>2023-01-13T21:45:00</ns0:StartBoundary>
+      <ns0:Enabled>true</ns0:Enabled>
+      <ns0:ScheduleByWeek>
+        <ns0:DaysOfWeek>
+          <ns0:Monday />
+          <ns0:Tuesday />
+          <ns0:Wednesday />
+          <ns0:Thursday />
+          <ns0:Friday />
+        </ns0:DaysOfWeek>
+        <ns0:WeeksInterval>1</ns0:WeeksInterval>
+      </ns0:ScheduleByWeek>
+    </ns0:CalendarTrigger>
+  </ns0:Triggers>
+  <ns0:Principals>
+    <ns0:Principal id="Author">
+      <ns0:GroupId>S-1-5-4</ns0:GroupId>
+      <ns0:RunLevel>LeastPrivilege</ns0:RunLevel>
+    </ns0:Principal>
+  </ns0:Principals>
+  <ns0:Settings>
+    <ns0:MultipleInstancesPolicy>IgnoreNew</ns0:MultipleInstancesPolicy>
+    <ns0:DisallowStartIfOnBatteries>false</ns0:DisallowStartIfOnBatteries>
+    <ns0:StopIfGoingOnBatteries>true</ns0:StopIfGoingOnBatteries>
+    <ns0:AllowHardTerminate>true</ns0:AllowHardTerminate>
+    <ns0:StartWhenAvailable>true</ns0:StartWhenAvailable>
+    <ns0:RunOnlyIfNetworkAvailable>false</ns0:RunOnlyIfNetworkAvailable>
+    <ns0:IdleSettings>
+      <ns0:StopOnIdleEnd>true</ns0:StopOnIdleEnd>
+      <ns0:RestartOnIdle>false</ns0:RestartOnIdle>
+    </ns0:IdleSettings>
+    <ns0:AllowStartOnDemand>true</ns0:AllowStartOnDemand>
+    <ns0:Enabled>true</ns0:Enabled>
+    <ns0:Hidden>false</ns0:Hidden>
+    <ns0:RunOnlyIfIdle>false</ns0:RunOnlyIfIdle>
+    <ns0:WakeToRun>true</ns0:WakeToRun>
+    <ns0:ExecutionTimeLimit>PT72H</ns0:ExecutionTimeLimit>
+    <ns0:Priority>7</ns0:Priority>
+  </ns0:Settings>
+  <ns0:Actions Context="Author">
+    <ns0:Exec>
+      <ns0:Command>XcomandX</ns0:Command>
+      <ns0:Arguments>start</ns0:Arguments>
+      <ns0:WorkingDirectory>XworkingX</ns0:WorkingDirectory>
+    </ns0:Exec>
+  </ns0:Actions>
+</ns0:Task>
