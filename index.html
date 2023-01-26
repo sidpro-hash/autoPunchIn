@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html lang="en-IN" dir="ltr">
+<head>
+  <title>PunchIn</title>
+  <meta charset="utf-8">
+  <meta name="author" content="SidPro"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Auto PunchIn is automation tool for ZingHR Attendance."/>
+  <meta name="keywords" content="PunchIn,Auto PunchIn,Zing HR,Zing HR PunchIn"/>
+  <!-- icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="icons/favicon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="icons/favicon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="icons/favicon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="icons/favicon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="icons/favicon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icons/favicon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/favicon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192x192.png">
+  <link rel="shortcut icon" type="image/x-icon" href="icons/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="icons/browserconfig.xml">
+  <link rel="manifest" href="icons/manifest.json">
+  <!-- icons -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <link rel ="stylesheet" href="bootstrap.min.css"/>
+  <script src="https://kit.fontawesome.com/5e8f32d58e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/index.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+  <!-- nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">PunchIn</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://collegeek.com/Live_DHTML/index.html">Live Editor</a></li>
+              <li><a class="dropdown-item" href="https://dashboard.collegeek.com/">Dashboard</a></li>
+              <li><a class="dropdown-item" href="https://linkshare.collegeek.com/">Link Share</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://collegeek.com/">Collegeek.com</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- nav -->
+  <!-- body -->
+  <div class="container-md my-3">
+    <div class="container">
+      <header class="header"><h1 class="title-of">AUTO PUNCHIN</h1></header>
+    </div>
+
+    <div class="Pcontainer">
+      <div class="download windows" onclick="location.href='https://drive.google.com/uc?id=14U8OhjdwNHfTnGz4hDR838ekACCibnHa&export=download';" style="cursor: pointer;">
+        <i class="fa fa fa-windows fa-3x"></i>
+        <span class="df">Download for</span>
+        <span class="dfn">Windows</span>
+      </div>
+      <br/>
+      <p>Punchin is an automation tool that uses Python Selenium and Windows Task Scheduler to automatically mark attendance in ZingHR.
+        Python Selenium is a library that allows for automating web browsers, which is used by Punchin to <span style="color: #4888fb;"><b>interact with the ZingHR website
+        and mark attendance on behalf of the employee</b></span>. Windows Task Scheduler is a built-in tool in the Windows operating system that allows
+        for scheduling tasks to be run at specific times or on specific triggers, which is used by Punchin to schedule the attendance-marking
+        process.</p>
+      <p>By using Python Selenium, Punchin can perform a variety of tasks such as logging into the ZingHR website, navigating to the
+        attendance page, and marking attendance. This allows the tool to mark attendance automatically with minimal human intervention.
+        With the help of Windows Task Scheduler, <span style="color: #4888fb;"><b>Punchin can be set up to run at specific times, such as when an employee arrives at the
+        office in the morning or when they leave in the evening</b></span>. This ensures that attendance is accurately tracked and recorded in a
+        timely manner.</p>
+      <p>It's important to note that this requirement may limit the flexibility of using Punchin, as the <span style="color: #4888fb;"><b>attendance marking process
+        will not run if the employee's machine is not on or not connected to the internet</b></span>. This may not be suitable for employees who
+        travel frequently or work remotely.However, Punchin can be set up to run on a dedicated machine, such as a Raspberry Pi or
+        other low-power device, that is always on and connected to the internet. This will ensure that attendance is always marked even
+        if the employee's machine is not on.</p>
+    </div>
+  </div>
+
+  <!-- body -->
+  <!-- miscellaneous -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<noscript>
+    <i style="color:orange;font-size:24px;">Your browser does not support JavaScript!<i><br/>
+	  <img src="images/noscript.png" style="width:auto;height:auto;">
+  </noscript>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">×</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
+  <!-- miscellaneous -->
+  <!-- Footer -->
+  <div class="ft" style="font-family: calibri,sans-serif;">
+    <footer>
+      <div class="ft-container">
+        <div class="sec aboutus">
+          <h2>About Us</h2>
+          <p style="margin-left:0px;">Punchin is an automation tool which interacts with the ZingHR website and mark attendance on behalf of the employee.
+            Punchin can be set up to run at specific times, such as when an employee arrives at the office in the morning or when they leave in the evening.</p>
+				  <ul class="sci">
+            <li><a href="https://github.com/sidpro-hash" target="_blank"><i class="fab fa-github"></i></a></li>
+				    <!-- <li><a href="https://twitter.com/GabuSiddharth" target="_blank"><i class="fab fa-twitter"></i></a></li> -->
+				    <li><a href="https://www.instagram.com/collegeekonline/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+				  </ul>
+			  </div>
+			  <div class="sec quickLinks">
+          <h2>Quick Links</h2>
+				    <ul>
+				      <li><a href="https://collegeek.com/about.html" target="_blank">About</a></li>
+				      <li><a href="https://cpp-collegeek.herokuapp.com/" target="_blank">Online Compiler</a></li>
+				      <li><a href="https://linkshare.collegeek.com/" target="_blank">LinkShare</a></li>
+				      <li><a href="https://collegeek.com/Live_DHTML/index.html" target="_blank">Live Editor</a></li>
+				      <li><a href="https://collegeek.com/privecypolicy.html" target="_blank">Privacy Policy</a></li>
+				      <li><a href="https://collegeek.com/Termsandcondition.html" target="_blank">Terms & Conditions</a></li>
+				    </ul>
+			  </div>
+			  <div class="sec ft-contact">
+          <h2>Contact Info</h2>
+				    <ul class="info">
+				      <li>
+					      <span><i class="fas fa-map-marker-alt"></i></span>
+					      <span>80 Feet Road, Anand Bagh, <br>Surendranagar, Gujarat <br>363001</span>
+				      </li>
+				      <li>
+					      <span><i class="fas fa-envelope"></i></span>
+					      <span><a href="mailto:collegeekonline@gmail.com">collegeekonline@gmail.com</a></span>
+				      </li>
+				   </ul>
+			  </div>
+			</div>
+		</footer>
+		<div class="copyrightText">
+			<p>© Copyright 2020-<script>document.write(new Date().getFullYear())</script> by <b><span style="font-size:20px;">C</span>ollegeek</b>. All Rights Reserved.<p>
+		</div>
+	</div>
+  <!-- Footer -->
+</body>
+<script>
+  //Get the button
+	var mybutton = document.getElementById("myBtn");
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {scrollFunction()};
+	function scrollFunction() {
+	  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+		mybutton.style.display = "block";
+	  } else {
+		mybutton.style.display = "none";
+	  }
+	}
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+	  document.body.scrollTop = 0;
+	  document.documentElement.scrollTop = 0;
+	}
+
+  function ZoomImage(element){
+    var modal = document.getElementById("myModal");
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    //var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    modal.style.display = "block";
+    modalImg.src = element.src;
+    captionText.innerHTML = element.alt;
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</html>

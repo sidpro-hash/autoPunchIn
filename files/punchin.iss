@@ -13,20 +13,20 @@
 AppId={{8AC36538-8103-4490-B940-F98F94DC1843}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={autopf}\My Program
+DefaultDirName={autopf}\autoPunchIn
 DisableProgramGroupPage=yes
-LicenseFile=F:\Windowcmd\Python\punchin\output\END USER LICENSE AGREEMENT.md
-InfoBeforeFile=F:\Windowcmd\Python\punchin\output\beforeInstall.txt
-InfoAfterFile=F:\Windowcmd\Python\punchin\output\afterInstall.txt
+LicenseFile=F:\Windowcmd\Python apps\Punchin\END USER LICENSE AGREEMENT.md
+InfoBeforeFile=F:\Windowcmd\Python apps\Punchin\beforeInstall.txt
+InfoAfterFile=F:\Windowcmd\Python apps\Punchin\afterInstall.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputBaseFilename=punchinsetup
-SetupIconFile=F:\Windowcmd\Python\punchin\favicon.ico
+SetupIconFile=F:\Windowcmd\Python apps\Punchin\favicon.ico
 Compression=lzma
 SolidCompression=yes
 DisableDirPage=no
@@ -40,10 +40,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "F:\Windowcmd\Python\punchin\output\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Windowcmd\Python\punchin\output\autoPunchIn.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Windowcmd\Python\punchin\assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
-//Source: "F:\Windowcmd\Python\punchin\output\key.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Windowcmd\Python\punchin\output\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
+Source: "F:\Windowcmd\Python apps\Punchin\autoPunchIn.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "F:\Windowcmd\Python apps\Punchin\assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Windowcmd\Python\punchin\output\punchin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "F:\Windowcmd\Python apps\Punchin\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -59,23 +59,15 @@ Filename: "{tmp}\7z.exe"; Parameters: "e chromedriver_win32.zip"; AfterInstall: 
 [Icons]
 Name: "{group}\My Program"; Filename: "{app}\MyProg.exe"
 
+[UninstallDelete]
+Type: files; Name: "{app}\chromedriver.exe"
+Type: files; Name: "{app}\key.txt"
+Type: files; Name: "{app}\logs.txt"
+Type: files; Name: "{app}\logs0.txt"
+Type: files; Name: "{app}\logs1.txt"
+Type: filesandordirs; Name: "{app}\.wdm"
 
 [Code]
-procedure WriteAppPath;
-var
-  A: AnsiString;
-  U: String;
-begin
-  LoadStringFromFile(ExpandConstant('{app}\autoPunchIn.xml'), A);
-  U:=A
-  Log(Format('File Data %s',[U]))
-  StringChange(U, 'XcomandX', ExpandConstant('{app}\{#MyAppExeName}'));
-  StringChange(U, 'XworkingX', ExpandConstant('{app}'));
-  Log(Format('File Data %s',[U]))
-  A:=U
-  SaveStringToFile(ExpandConstant('{app}\autoPunchIn.xml'), A, False);
-end;
-(*
 var
   DownloadPage: TDownloadWizardPage;
 const
@@ -113,12 +105,25 @@ begin
     Result := S;
 end;
 
-procedure CopyTo;
+procedure WriteAppPath;
+var
+  A: AnsiString;
+  U: String;
 begin
+  LoadStringFromFile(ExpandConstant('{app}\autoPunchIn.xml'), A);
+  U:=A
+  Log(Format('File Data %s',[U]))
+  StringChange(U, 'XcomandX', ExpandConstant('{app}\{#MyAppExeName}'));
+  StringChange(U, 'XworkingX', ExpandConstant('{app}'));
+  Log(Format('File Data %s',[U]))
+  A:=U
+  SaveStringToFile(ExpandConstant('{app}\autoPunchIn.xml'), A, False);
+
   if FileCopy(ExpandConstant('{tmp}\chromedriver.exe'), ExpandConstant('{app}\chromedriver.exe'), false) then
   begin
-    Log('copied')
+    Log('copied chromedriver')
   end;
+
 end;
 
 function GetChromeVersion(Value: string;Version: Integer): string;
@@ -191,8 +196,8 @@ begin
       else
       begin
         // Make sure the page displays the URL that fails to download
-        //DownloadPage.Msg2Label.Caption := Url;
-        //Answer := SuppressibleMsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_ABORTRETRYIGNORE, IDABORT);
+        DownloadPage.Msg2Label.Caption := Url;
+        Answer := SuppressibleMsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_ABORTRETRYIGNORE, IDABORT);
         Retry := False;
         Result := False;
       end;
@@ -252,7 +257,7 @@ begin
   end
     else Result := True;
 end;
-*)
+
 
 
 
