@@ -1,5 +1,7 @@
 # autoPunchIn
 
+Punchin is an automation tool which interacts with the ZingHR website and mark attendance on behalf of the employee. Punchin can be set up to run at specific times, such as when an employee arrives at the office in the morning or when they leave in the evening.
+
 ## Convert Python Script to EXE
 ```
 pyinstaller --noconfirm --onedir --console --icon "F:/Windowcmd/Python/punchin/favicon.ico"  "F:/Windowcmd/Python/punchin/punchin.py"
