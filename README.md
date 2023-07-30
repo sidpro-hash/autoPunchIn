@@ -24,8 +24,21 @@ firebase init
 6. use your public directory-> public
 7. single page app -> N
 8. Set up automatic -> N
-9. Overwrite? -> N
-10. deploy
+9. Overwrite? -> N (This step has been skiped so copy all resource(all dirs and .html files) again in public directory)
+10. deploy (before that modify the firebase json) for punchin deployment only
+11. ```
+    {
+  "hosting": {
+	"site": "punchin",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+	  "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+    ```
 ```
 firebase deploy --only hosting:punchin
 ```
