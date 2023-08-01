@@ -43,7 +43,7 @@ Source: "F:\Windowcmd\Python\punchin\output\{#MyAppExeName}"; DestDir: "{app}"; 
 Source: "F:\Windowcmd\Python apps\Punchin\autoPunchIn.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Windowcmd\Python apps\Punchin\assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Windowcmd\Python\punchin\output\punchin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "F:\Windowcmd\Python apps\Punchin\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
+//Source: "F:\Windowcmd\Python apps\Punchin\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -53,7 +53,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent;
-Filename: "{tmp}\7z.exe"; Parameters: "e chromedriver_win32.zip"; AfterInstall: WriteAppPath
+//Filename: "{tmp}\7z.exe"; Parameters: "e chromedriver_win32.zip"; AfterInstall: WriteAppPath
 //Filename: "schtasks"; Parameters: "/create /XML {app}\autoPunchIn.xml /tn autoPunchIn"; BeforeInstall WriteAppPath
 
 [Icons]
@@ -67,7 +67,9 @@ Type: files; Name: "{app}\logs0.txt"
 Type: files; Name: "{app}\logs1.txt"
 Type: filesandordirs; Name: "{app}\.wdm"
 
+
 [Code]
+(*
 var
   DownloadPage: TDownloadWizardPage;
 const
@@ -233,11 +235,11 @@ begin
 
       DownloadPage.Show;
 
-      Result := RobustDownload(Format('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_%d',[Version]), 'chromedriver_win32.txt', '');
+      //Result := RobustDownload(Format('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_%d',[Version]), 'chromedriver_win32.txt', '');
       
       // retry 10 times downloading other lower versions
-      for i:= 1 to 10 do
-      begin
+      {for i:= 1 to 10 do
+       begin
         Result := RobustDownload(Format('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_%d',[Version - i]), 'chromedriver_win32.txt', '');
         if Result then
           break;
@@ -245,19 +247,20 @@ begin
     
       if Result then
       begin
-        if TryGetFileLine(ExpandConstant('{tmp}\chromedriver_win32.txt'),0,S) then
+        //if TryGetFileLine(ExpandConstant('{tmp}\chromedriver_win32.txt'),0,S) then
         begin
           S := GetChromeVersion(S,4);
           Result := RobustDownload(Format('https://chromedriver.storage.googleapis.com/%s/chromedriver_win32.zip',[S]), 'chromedriver_win32.zip', '');
         end;
       end;
+      }
     finally
       DownloadPage.Hide;
     end;
   end
     else Result := True;
 end;
-
+*)
 
 
 

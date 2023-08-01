@@ -1,6 +1,4 @@
 # Importing Useful libraries
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from cryptography.fernet import Fernet
 import time
 import os
@@ -14,6 +12,13 @@ from tkinter import messagebox
 from tktimepicker import AnalogPicker, AnalogThemes, constants
 from datetime import date
 import xml.etree.ElementTree as ET
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+import downloadChrome
+
+
+
 
 
 '''
@@ -113,7 +118,7 @@ def select_path():
 
 
 def know_more_clicked(event):
-    instructions = ("https://collegeek.com/")
+    instructions = ("https://punchin.collegeek.com/")
     webbrowser.open_new_tab(instructions)
 
 
@@ -160,19 +165,34 @@ def core():
     companyCode = fernet.decrypt(lines[3]).decode()
     empCode = fernet.decrypt(lines[2]).decode()
 
-
-    if os.path.exists('.wdm'):
-        with open('.wdm/drivers.json', 'r') as file:
-            text = file.read()
-            text = text.split('"binary_path": ')[1]
-            x = text.rfind('"')
-            text = text[:x+1]
-            text = pathlib.Path(text).as_posix()
-            text = text[3:(len(text)-1)]
-            text = os.path.normcase(text)
-            driver = webdriver.Chrome(text)
-    else:
-        driver = webdriver.Chrome(ChromeDriverManager(path='.').install())
+    try:
+        if os.path.exists('.wdm'):
+            with open('.wdm/drivers.json', 'r') as file:
+                text = file.read()
+                text = text.split('"binary_path": ')[1]
+                x = text.rfind('"')
+                text = text[:x+1]
+                text = pathlib.Path(text).as_posix()
+                text = text[3:(len(text)-1)]
+                text = os.path.normcase(text)
+                driver = webdriver.Chrome(service=ChromeService(executable_path=text))
+        else:
+            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(executable_path='.').install()))
+    except Exception as e:
+        try:
+            downloadChrome.download()
+            if os.path.exists('.wdm'):
+                with open('.wdm/drivers.json', 'r') as file:
+                    text = file.read()
+                    text = text.split('"binary_path": ')[1]
+                    x = text.rfind('"')
+                    text = text[:x+1]
+                    text = pathlib.Path(text).as_posix()
+                    text = text[3:(len(text)-1)]
+                    text = os.path.normcase(text)
+                    driver = webdriver.Chrome(service=ChromeService(executable_path=text))
+        except Exception as e:
+            pass
     #driver = webdriver.Chrome()
     # print(dir(driver)) # check all methods
     driver.get("https://portal.zinghr.com/2015/pages/authentication/login.aspx")
