@@ -6,7 +6,12 @@ Punchin is an automation tool which interacts with the ZingHR website and mark a
 ```
 pyinstaller --noconfirm --onedir --console --icon "F:/Windowcmd/Python/punchin/favicon.ico"  "F:/Windowcmd/Python/punchin/punchin.py"
 ```
-
+## or
+1. Run auto-py-to-exe interactive mode
+```
+auto-py-to-exe
+```
+2. select main punchin.py file, add icon file, add assets folder and autoPunchin.xml to additional files(you can add it later by copy-pasting it punchin directory)
 
 ## FireBase deploy commands
 
