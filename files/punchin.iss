@@ -43,7 +43,7 @@ Source: "F:\Windowcmd\Python\punchin\output\{#MyAppExeName}"; DestDir: "{app}"; 
 Source: "F:\Windowcmd\Python apps\Punchin\autoPunchIn.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Windowcmd\Python apps\Punchin\assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "F:\Windowcmd\Python\punchin\output\punchin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-//Source: "F:\Windowcmd\Python apps\Punchin\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
+Source: "F:\Windowcmd\Python apps\Punchin\7z.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -54,6 +54,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent;
 //Filename: "{tmp}\7z.exe"; Parameters: "e chromedriver_win32.zip"; AfterInstall: WriteAppPath
+Filename: "{tmp}\7z.exe"; AfterInstall: WriteAppPath
 //Filename: "schtasks"; Parameters: "/create /XML {app}\autoPunchIn.xml /tn autoPunchIn"; BeforeInstall WriteAppPath
 
 [Icons]
@@ -69,6 +70,22 @@ Type: filesandordirs; Name: "{app}\.wdm"
 
 
 [Code]
+
+procedure WriteAppPath;
+var
+  A: AnsiString;
+  U: String;
+begin
+  LoadStringFromFile(ExpandConstant('{app}\autoPunchIn.xml'), A);
+  U:=A
+  Log(Format('File Data %s',[U]))
+  StringChange(U, 'XcomandX', ExpandConstant('{app}\{#MyAppExeName}'));
+  StringChange(U, 'XworkingX', ExpandConstant('{app}'));
+  Log(Format('File Data %s',[U]))
+  A:=U
+  SaveStringToFile(ExpandConstant('{app}\autoPunchIn.xml'), A, False);
+end;
+
 (*
 var
   DownloadPage: TDownloadWizardPage;
